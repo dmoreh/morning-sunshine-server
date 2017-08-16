@@ -1,11 +1,6 @@
 class DocumentsController < ApplicationController
   before_action :set_document, only: [:show]
 
-  # GET /documents
-  def index
-    @documents = Document.all
-  end
-
   # GET /documents/1
   def show
     send_data(@document.file_contents,
