@@ -18,7 +18,8 @@ class DocumentsController < ApplicationController
     @document = Document.new(document_params)
 
     if @document.save
-      redirect_to root_path, notice: 'Document was successfully created.'
+      flash[:success] = "Thanks! I can't wait to wake up to your message."
+      redirect_to root_path
     else
       render :new
     end
