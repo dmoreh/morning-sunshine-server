@@ -13,12 +13,12 @@ class DocumentsController < ApplicationController
               filename: @document.filename)
   end
 
-  # GET /documents/new
+  # GET /upload
   def new
     @document = Document.new
   end
 
-  # POST /documents
+  # POST /upload
   def create
     @document = Document.new(document_params)
 
