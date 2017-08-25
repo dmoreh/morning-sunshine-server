@@ -1,4 +1,5 @@
 class DocumentsController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   before_action :set_document, only: [:show]
 
   # GET /documents/1
@@ -30,6 +31,10 @@ class DocumentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_document
       @document = Document.find(params[:id])
+    end
+
+    def record_not_found(error)
+      render json: { error: error.message }, status: :not_found
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
